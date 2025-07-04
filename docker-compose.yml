@@ -1,0 +1,14 @@
+services:
+  backend1:
+    build: ./backend
+    container_name: backend1
+  backend2:
+    build: ./backend
+    container_name: backend2
+  loadbalance:
+    build: ./load-balance
+    ports:
+     - 8000:80
+    depends_on:
+     - backend1
+     - backend2
